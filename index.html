@@ -9,13 +9,50 @@
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./node_modules/hover.css/css/hover.css">
+    <script>
+        $(document).ready(function() {
+            $("#homePage").validate({
+                rules: {
+                    "username": {
+                        required: true,
+                        minlength: 5,
+                        maxlength: 20
+                    },
+                    "favorcolor": {
+                        required: true
+                    }
+                },
+                messages: {
+                    username: {
+                        required: "Enter username",
+                        minlength: "too short",
+                        maxlength: "too long"
+                    },
+                    favorcolor: "Enter favorcolor"
+                },
+                errorPlacement: function(error, element) {
+                    error.insertAfter(element);
+                }
+            });
+        });
+    </script>
+
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 
 <div class="neko">
 
     <body>
         <div class="container">
-            <form>
+            <form data-role="form" id="homePage">
+                <fieldset data-role="fieldcontain">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username">
+                </fieldset>
                 <h1 class="text-center">Yay, Puppies ! Evaluate Restaurant !</h1>
                 <div class="form-row">
                     <div class="form-group col-md-6">
@@ -23,28 +60,34 @@
                         <input type="email" class="form-control" id="inputEmail4" placeholder="Restaurant's Name">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputPassword4">Reporter Name</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Reporter's Name">
+                        <label for="inputName">Reporter Name</label>
+                        <input type="text" class="form-control" id="inputName" placeholder="Reporter's Name">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4">Average Meal Price (VND)<template v-slot:name>defaultcontent</template></label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Pet's Breed">
+                        <label for="inputPrice">Average Meal Price (VND)<template v-slot:name>defaultcontent</template></label>
+                        <input type="number" class="form-control" id="inputEmail4" placeholder="Pet's Breed">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputPassword4">Date of The Visit</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="MM/DD/YYYY">
+                        <label for="inputDate">Date of The Visit</label>
+                        <input type="date" class="form-control" id="inputDate" placeholder="MM/DD/YYYY">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         Gender
                         <br>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-info">Male</button>
-                            <button type="button" class="btn btn-info">Female</button>
-                        </div>
+                        <fieldset data-role="fieldcontain">
+                            <label for="favorcolor">Favorite Color:</label>
+                        </fieldset>
+                        <select id="favorcolor" name="favorcolor">
+                                <option value="">Select One</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                        </select>
+                        <!-- <button type="button" class="btn btn-info">Male</button>
+                        <button type="button" class="btn btn-info">Female</button> -->
                     </div>
                     <div class="form-group col-md-6">
                         Restaurant Type
@@ -95,12 +138,17 @@
                 <div>
                     <button type="submit" class="back">Back</button>
                     <button type="submit" class="submit">Submit</button>
+                    <input type="submit" id="register" value="Register">
                 </div>
             </form>
         </div>
 </div>
 <!-- CDN -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script> -->
+
+
 </body>
 
 </html>
